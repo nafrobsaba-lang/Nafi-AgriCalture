@@ -110,7 +110,7 @@ export default function Login() {
               <Wheat className="h-7 w-7 text-white" />
             </div>
             <div>
-              <h1 className="text-green-800 text-2xl font-bold">AgriMarket</h1>
+              <h1 className="text-green-800 text-2xl font-bold">Nafi-AgriMarket</h1>
               <p className="text-green-600 text-xs">Farm to Market Platform</p>
             </div>
           </div>
