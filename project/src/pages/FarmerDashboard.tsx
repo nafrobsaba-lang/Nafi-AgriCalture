@@ -66,33 +66,38 @@ export default function FarmerDashboard() {
             </h1>
             <p className="text-gray-500 mt-1">Manage your products and incoming orders</p>
           </div>
-          <button
-            onClick={() => navigate('/farmer/products/new')}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-green-100"
-          >
-            <Plus className="h-4 w-4" />
-            Add Product
-          </button>
-        </div>
+          {/* --- KUTAA HAARAAN ATI GALCHITU KANA --- */}
+  <div className="flex flex-col items-end gap-2">
+    {/* Button-ni duraan jiru akkuma jirutti */}
+    <button
+      onClick={() => navigate('/farmer/products/new')}
+      className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-green-100"
+    >
+      <Plus className="h-4 w-4" />
+      Add Product
+    </button>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {[
-            { label: 'Active Products', value: activeProducts.length, icon: Package, color: 'text-green-600 bg-green-50' },
-            { label: 'Pending Orders', value: pendingOrders.length, icon: AlertCircle, color: 'text-amber-600 bg-amber-50' },
-            { label: 'Total Orders', value: orders.length, icon: ClipboardList, color: 'text-blue-600 bg-blue-50' },
-            { label: 'Total Revenue', value: `ETB ${totalRevenue.toLocaleString()}`, icon: TrendingUp, color: 'text-emerald-600 bg-emerald-50' },
-          ].map(({ label, value, icon: Icon, color }) => (
-            <div key={label} className="bg-white rounded-2xl border border-gray-100 p-5">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${color}`}>
-                <Icon className="h-5 w-5" />
-              </div>
-              <p className="text-2xl font-bold text-gray-900">{value}</p>
-              <p className="text-sm text-gray-500 mt-0.5">{label}</p>
-            </div>
-          ))}
-        </div>
-
+    {/* choose cameera */}
+    <label className="flex items-center gap-2 text-xs font-medium text-green-700 bg-green-50 px-3 py-1.5 rounded-lg cursor-pointer hover:bg-green-100 border border-green-200 transition-all">
+      <span className="text-sm">📷</span>
+      <span>take photo</span>
+      <input 
+        type="file" 
+        accept="image/*" 
+        capture="environment" 
+        className="hidden" 
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) {
+            // Fakkicha qabannee gara fuula 'new' sanaatti darba
+            navigate('/farmer/products/new', { state: { capturedImage: file } });
+          }
+        }}
+      />
+    </label>
+  </div>
+  {/* ----------------------------------------- */}
+</div>
         {/* Tabs */}
         <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-6 w-fit">
           {[
